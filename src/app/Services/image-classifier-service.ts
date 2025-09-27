@@ -1,5 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import * as mobileNet from '@tensorflow-models/mobilenet';
+import '@tensorflow/tfjs'
 
 @Injectable({
   providedIn: 'root'
