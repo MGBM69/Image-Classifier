@@ -15,8 +15,10 @@ export class ImageClassifier {
   predictions=signal<Predictions[]>([]);
   isLoading=this.imageClassifierService.isLoading;
   modelLoaded=this.imageClassifierService.modelLoaded;
+  modelError=this.imageClassifierService.modelError;
   imageSource=signal<string|ArrayBuffer|null>(null);
   isImageClassifying=signal(false);
+
 
 
   onFileSelected(event:Event){

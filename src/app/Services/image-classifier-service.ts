@@ -9,6 +9,7 @@ export class ImageClassifierService {
   private model: mobileNet.MobileNet |null=null;
   public modelLoaded=signal(false);
   public isLoading = signal(false);
+  public modelError=signal<string|null>(null);
 
   constructor(){
     this.loadModel();
@@ -16,6 +17,7 @@ export class ImageClassifierService {
 
   async loadModel(){
     this.isLoading.set(true);
+    this.modelError.set(null);
     try{
       this.model=await mobileNet.load()
       this.modelLoaded.set(true);
@@ -23,6 +25,7 @@ export class ImageClassifierService {
       
     }catch(error){
       console.error('Error loaqding model:',error);
+      this.modelError.set('Failed to load Model!');
       
     }finally{
       this.isLoading.set(false);
